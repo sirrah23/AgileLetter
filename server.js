@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const db = require("./db.js");
+const {storeEmail} = require("./emailStore.js");
 
 
 app.use(express.static('public'));
@@ -10,7 +10,6 @@ app.get("/", function (req, res) {
 });
 
 app.post("/storeEmail", function(req, res){
-   
     const inputEmail = req.query.email;
     
     if(!inputEmail || inputEmail.length === 0){
@@ -19,29 +18,15 @@ app.post("/storeEmail", function(req, res){
       return;
     }
   
-    const emailToStore = {email: inputEmail}
-    
-    //TODO: Hide this logic in another function
-    db.find(emailToStore)
-      .then((emailDocsDB) => {
-        if(emailDocsDB.length > 0){
-          console.log(`${inputEmail} already exists in database, quitting`);
-          res.sendStatus(400);
-          return Promise.resolve(null)
-        } else {
-          return db.insert(emailToStore)
-        }
+    storeEmail(inputEmail)
+      .then((emailDoc) => {
+        console.log(`${inputEmail} inserted with id ${emailDoc._id}`)
+        res.sendStatus(200)
       })
-      .then((emailInsertRes) => {
-        if(emailInsertRes !== null){
-            console.log(`${inputEmail} inserted into database with id ${emailInsertRes._id}`);                                          
-            res.sendStatus(200);
-        }
+      .catch((err) => {
+        console.log(`Something went wrong: ${err}`)
+        res.sendStatus(400)
       })
-      .catch((e) => {
-        console.log(`Something went wrong: ${e}`);
-        res.sendStatus(500)
-      });
 })
 
 // listen for requests :)
