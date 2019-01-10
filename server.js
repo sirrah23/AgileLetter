@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-var Datastore = require('nedb'), 
-    db = new Datastore({ filename: '.data/datafile', autoload: true });
+const Datastore = require('nedb');
+const db = new Datastore({ filename: '.data/datafile', autoload: true });
 
 app.use(express.static('public'));
 
