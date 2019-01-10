@@ -21,7 +21,18 @@ function insert(data){
   });
 }
 
+function remove(query, opts={}){
+   return new Promise((resolve, reject) => {
+     db.remove(query, opts, (err, numRemoved) => {
+       if(err)
+         reject(err)
+       resolve(numRemoved)
+     });
+   });
+}
+
 module.exports = {
   find,
-  insert
+  insert,
+  remove
 }

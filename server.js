@@ -1,12 +1,20 @@
 const express = require('express');
 const app = express();
-const {storeEmail} = require("./emailStore.js");
+const {storeEmail, deleteEmail} = require("./emailStore.js");
 
 
 app.use(express.static('public'));
 
 app.get("/", function (req, res) {
-  res.sendFile(__dirname + '/views/index.html');
+  res.redirect("/sub");
+});
+
+app.get("/sub", function (req, res) {
+  res.sendFile(`${__dirname}/views/sub.html`);
+});
+
+app.get("/unsub", function(req, res){
+    res.sendFile(`${__dirname}/views/unsub.html`);
 });
 
 app.post("/storeEmail", function(req, res){
@@ -21,6 +29,30 @@ app.post("/storeEmail", function(req, res){
     storeEmail(inputEmail)
       .then((emailDoc) => {
         console.log(`${inputEmail} inserted with id ${emailDoc._id}`)
+        res.sendStatus(200)
+      })
+      .catch((err) => {
+        console.log(`Something went wrong: ${err}`)
+        res.sendStatus(400)
+      })
+})
+
+app.post("/deleteEmail", function(req, res){
+    const inputEmail = req.query.email;
+    
+    if(!inputEmail || inputEmail.length === 0){
+      console.log("No email given");
+      res.sendStatus(400);
+      return;
+    }
+  
+    deleteEmail(inputEmail)
+      .then((numRemoved) => {
+        if(numRemoved !== 1){
+           console.log(`${inputEmail} could not be deleted`)
+        } else {
+           console.log(`${inputEmail} deleted`) 
+        }
         res.sendStatus(200)
       })
       .catch((err) => {

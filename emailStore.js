@@ -1,14 +1,18 @@
 const ds = require("./datastore.js");
 
 function storeEmail(email){  
-    const emailObj = {email}
-    
+    const emailObj = {email};
     return ds.find(emailObj)
       .then((emailDocsDB) => {
         if(emailDocsDB.length > 0)
-          return Promise.reject(`${email} already in database`)
-        return ds.insert(emailObj)      
+          return Promise.reject(`${email} already in database`);
+        return ds.insert(emailObj);      
       })  
 }
 
-module.exports = {storeEmail}
+function deleteEmail(email){  
+    const emailObj = {email};
+    return ds.remove(emailObj);
+}
+
+module.exports = {storeEmail, deleteEmail}
