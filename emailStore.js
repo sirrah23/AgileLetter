@@ -15,8 +15,8 @@ function deleteEmail(email){
     return ds.remove(emailObj);
 }
 
-function getAllEmail(email){
+function getAllEmail(){
    return ds.find({}); 
 }
 
-module.exports = {storeEmail, deleteEmail}
+module.exports = {storeEmail, deleteEmail, getAllEmail}
