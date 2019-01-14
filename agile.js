@@ -1,6 +1,7 @@
 //http://agilemanifesto.org/principles.html
 
-module.exports = [
+
+const principles  = [
   "Our highest priority is to satisfy the customer through early and continuous delivery of valuable software.",
   "Welcome changing requirements, even late in development. Agile processes harness change for the customer's competitive advantage.",
   "Deliver working software frequently, from a couple of weeks to a couple of months, with a preference to the shorter timescale.",
@@ -13,4 +14,11 @@ module.exports = [
   "Simplicity--the art of maximizing the amount of work not done--is essential.",
   "The best architectures, requirements, and designs emerge from self-organizing teams.",
   "At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly." ,
-]
+];
+
+
+module.exports = {
+  getRandomPrinciple(){
+    return principles[Math.floor(Math.random()*principles.length)];
+  }
+};
