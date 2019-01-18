@@ -1,5 +1,6 @@
 dependencies:
   body-parser: 1.18.3
+  cron: 1.6.0
   express: 4.16.3
   nedb: 1.8.0
   sendgrid: 5.2.3
@@ -155,6 +156,12 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-5+Ch+e9DtMi6klxcWpboBtFoc7s=
+  /cron/1.6.0:
+    dependencies:
+      moment-timezone: 0.5.23
+    dev: false
+    resolution:
+      integrity: sha512-8OkXbeK3qF42ndzkIkCo3zfCDg2TxGjQiCQqVE+ZFFHa4vAcw0PdBc5i/6aJ9FppLncyKZmDuZdJ9/uuXEYZaw==
   /debug/2.6.9:
     dependencies:
       ms: 2.0.0
@@ -427,6 +434,16 @@ packages:
     hasBin: true
     resolution:
       integrity: sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
+  /moment-timezone/0.5.23:
+    dependencies:
+      moment: 2.23.0
+    dev: false
+    resolution:
+      integrity: sha512-WHFH85DkCfiNMDX5D3X7hpNH3/PUhjTGcD0U1SgfBGZxJ3qUmJh5FdvaFjcClxOvB3rzdfj4oRffbI38jEnC1w==
+  /moment/2.23.0:
+    dev: false
+    resolution:
+      integrity: sha512-3IE39bHVqFbWWaPOMHZF98Q9c3LDKGTmypMiTM2QygGXXElkFWIH7GxfmlwmY2vwa+wmNsoYZmG2iusf1ZjJoA==
   /ms/2.0.0:
     dev: false
     resolution:
@@ -637,6 +654,7 @@ shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
   body-parser: ^1.18.3
+  cron: ^1.6.0
   express: ^4.15.2
   nedb: ^1.8.0
   sendgrid: '*'
