@@ -1,4 +1,8 @@
-//http://agilemanifesto.org/principles.html
+/**
+* Contains a list of Agile principles sourced from 
+*   http://agilemanifesto.org/principles.html
+* and surfaces a function which allows you to pick get a random one.
+*/
 
 
 const principles  = [

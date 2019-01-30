@@ -1,3 +1,11 @@
+/**
+* A thin promise-based wrapper around the nedb datastore. Allows you to run the
+* following types of queries:
+*  1. find
+*  2. insert
+*  3. remove
+*/
+
 const Datastore = require('nedb');
 const db = new Datastore({ filename: '.data/datafile', autoload: true });
 

@@ -1,3 +1,8 @@
+/**
+* Contains end-points for our website to allow users to subscribe and unsubscribe
+* from the mailing list.
+*/
+
 const express = require('express');
 const app = express();
 const {storeEmail, deleteEmail} = require("./emailStore.js");

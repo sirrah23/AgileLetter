@@ -1,3 +1,7 @@
+/**
+* Surfaces a series of functions which allow you to store, delete, and fetch emails into a datastore.
+*/
+
 const ds = require("./datastore.js");
 
 function storeEmail(email){  

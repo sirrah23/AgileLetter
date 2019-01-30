@@ -1,3 +1,7 @@
+/**
+* Contains a function which send all subscribers an email containing a random Agile principle.
+*/
+
 const sendEmail = require("./mailer.js");
 const emailStore = require("./emailStore.js");
 const {getRandomPrinciple} = require("./agile.js")
