@@ -1,3 +1,9 @@
+/**
+* The main file for this program which will
+*   1. Start up a scheduler which sends weekly emails to subscribers
+*   2. Spin up a webserver to serve the website
+*/
+
 const app = require("./server.js");
 const {runWeekly} = require("./scheduler.js")
 const agileMailer = require("./agileMailer")

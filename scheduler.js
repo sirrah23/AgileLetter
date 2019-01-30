@@ -1,3 +1,7 @@
+/**
+* Schedule an arbitray function to run weekly on a given day and time.
+*/
+
 const CronJob = require("cron").CronJob;
 
 

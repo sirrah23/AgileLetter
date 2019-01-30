@@ -1,3 +1,7 @@
+/**
+* Send an email using the Sendgrid API.
+*/
+
 const helper = require('sendgrid').mail;
 const API_KEY = process.env.SENDGRID_API_KEY;
 
